@@ -2,6 +2,7 @@
 
 import cv
 from undistort import *
+from ImageCapture import *
 
 class VideoSource:
     def __init__(self):
@@ -14,7 +15,10 @@ class VideoSource:
     def next(self):
         self.img = cv.QueryFrame(self.capturing_device)
         #cv.CvtColor(self.img, self.imageColor, cv.CV_GRAY2RGB)
-        return undistort(self.img)
+        
+        x = undistort(self.img)
+        saveImage(x)
+        return x
         
 
        
